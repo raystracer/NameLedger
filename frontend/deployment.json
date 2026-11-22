@@ -1,0 +1,11 @@
+{
+  "chainId": 11155111,
+  "contract": "0x74D67b2ab7a6a57fb9c96e3C7fDe93aAB6d098f7",
+  "feeWei": "1000000000000000",
+  "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "deployBlock": 12186698,
+  "deployTx": "0x69e5c1ee1788d1c1226aa9fea0e4b68ddd1e8ba962df81c7a5a1c0a25748a3e0",
+  "deployer": "0xCFab24E31d6b186FB10ebcCCc7F58785cC472a11",
+  "scanBlocks": 5000,
+  "deployedAt": "2026-11-22T13:31:00"
+}

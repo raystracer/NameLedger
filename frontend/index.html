@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NameLedger</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- icon sprite: every glyph uses currentColor -->
+    <svg class="sprite" aria-hidden="true">
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.6 3.4a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5" /></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2.5" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" /><path d="M19.4 14.6a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.3-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.2a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.6 1Z" /></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 1.8" /></symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 12 22l-9-9V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z" /><circle cx="7.6" cy="7.6" r="1.3" /></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z" /></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="4.2" /><circle cx="12" cy="12" r="1" /></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5.5A2.5 2.5 0 0 1 3 16.5Z" /><path d="M16.5 12h3" /></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2" /><rect x="13.5" y="3.5" width="7" height="7" rx="2" /><rect x="3.5" y="13.5" width="7" height="7" rx="2" /><rect x="13.5" y="13.5" width="7" height="7" rx="2" /></symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2Z" /><path d="M9.5 8h5M9.5 12h5" /></symbol>
+      <symbol id="i-store" viewBox="0 0 24 24"><path d="M3.5 9 5 4h14l1.5 5" /><path d="M4.5 9v10h15V9" /><path d="M3.5 9h17" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m20.5 20.5-4-4" /></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.5" /><path d="m11.5 11.5 8 8M16.5 16.5l2-2M14.5 14.5l2-2" /></symbol>
+      <symbol id="i-record" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" /></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1" /><path d="M20.5 3.5v5h-5" /></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7.5v5.5M12 16.5h.01" /></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></symbol>
+    </svg>
+
+    <header class="topbar">
+      <a class="brand" href="#/">
+        <img class="logo" src="logo.png" alt="" width="28" height="28" />
+        <span class="brandname">NameLedger</span>
+      </a>
+
+      <nav class="nav">
+        <a data-nav="home" href="#/" data-i18n="首页">首页</a>
+        <a data-nav="market" href="#/market" data-i18n="市场">市场</a>
+        <a data-nav="me" href="#/me" data-i18n="我的">我的</a>
+      </nav>
+
+      <div class="spacer"></div>
+
+      <button class="netchip" id="netChip" title="连接设置" data-i18n-title="连接设置">
+        <span class="dot" id="netDot"></span>
+        <span id="netText">未连接</span>
+        <span class="agree" id="agreeBadge"></span>
+      </button>
+
+      <button class="acct" id="acctChip" title="账户" data-i18n-title="账户">
+        <span class="avatar" id="acctAvatar"></span>
+        <span class="acctname mono" id="acctName">未连接账户</span>
+        <span class="signermark hidden" id="signerMark"><svg class="icon"><use href="#i-wallet" /></svg></span>
+        <span class="bal mono" id="acctBal"></span>
+        <svg class="icon chev"><use href="#i-chev" /></svg>
+      </button>
+
+      <button id="btnWallet" class="iconbtn text hidden" title="连接钱包" data-i18n-title="连接钱包">
+        <svg class="icon"><use href="#i-wallet" /></svg>
+        <span data-i18n="连接钱包">连接钱包</span>
+      </button>
+      <button id="btnSettings" class="iconbtn" title="设置" data-i18n-title="设置">
+        <svg class="icon"><use href="#i-gear" /></svg>
+      </button>
+    </header>
+
+    <!-- connection settings: opened from the network chip -->
+    <div id="conn" class="settings hidden">
+      <div class="setrow">
+        <label class="setfield"
+          ><span data-i18n="节点 {0}" data-i18n-arg="1">节点 1</span>
+          <input class="rpcinput" data-rpc="0" placeholder="http://" /></label
+        >
+        <label class="setfield"
+          ><span data-i18n="节点 {0}" data-i18n-arg="2">节点 2</span>
+          <input class="rpcinput" data-rpc="1" placeholder="http://" /></label
+        >
+        <label class="setfield"
+          ><span data-i18n="节点 {0}" data-i18n-arg="3">节点 3</span>
+          <input class="rpcinput" data-rpc="2" placeholder="http://" /></label
+        >
+      </div>
+
+      <div class="setrow">
+        <label class="setfield fix"
+          ><span data-i18n="扫描范围">扫描范围</span>
+          <select id="scanBlocks" data-scan>
+            <option value="1000">1,000</option>
+            <option value="5000">5,000</option>
+            <option value="10000" selected>10,000</option>
+          </select></label
+        >
+        <label class="setfield grow"
+          ><span data-i18n="合约地址">合约地址</span>
+          <input id="contractAddr" placeholder="0x" /></label
+        >
+        <label id="walletPick" class="setfield fix hidden"
+          ><span data-i18n="钱包">钱包</span> <select id="walletSel"></select
+        ></label>
+        <div class="setfield fix">
+          <span data-i18n="网络">网络</span>
+          <span class="langseg" id="netSeg">
+            <button type="button" class="langbtn" data-net="sepolia">Sepolia</button>
+            <button type="button" class="langbtn" data-net="custom" data-i18n="Custom">Custom</button>
+          </span>
+        </div>
+        <div class="setfield fix"><span></span><button id="btnApply" class="primary setapply" data-i18n="应用">应用</button></div>
+      </div>
+    </div>
+
+    <!-- account: opened from the account chip -->
+    <div id="acctPanel" class="settings hidden">
+      <div class="setrow">
+        <div class="setfield grow">
+          <span data-i18n="账户">账户</span>
+          <select id="acctSel" class="hidden"></select>
+          <span id="acctSingle" class="fieldstatic mono muted">未连接</span>
+        </div>
+        <div class="setfield fix">
+          <span data-i18n="浏览器钱包">浏览器钱包</span>
+          <button id="btnWallet2" class="primary setapply setact" data-i18n="连接钱包">连接钱包</button>
+        </div>
+      </div>
+      <div class="setrow">
+        <label class="setfield grow"
+          ><span data-i18n="自定义地址（只读查看）">自定义地址（只读查看）</span>
+          <input id="customAddr" placeholder="0x…" /></label
+        >
+        <div class="setfield fix"><span></span>
+          <button id="btnUseAddr" class="subtle setapply setact" data-i18n="查看">查看</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- preferences: opened from the gear button -->
+    <div id="prefs" class="settings hidden">
+      <div class="setrow">
+        <div class="setfield fix">
+          <span data-i18n="语言">语言</span>
+          <span class="langseg">
+            <button type="button" class="langbtn" data-lang="zh">中文</button>
+            <button type="button" class="langbtn" data-lang="en">English</button>
+          </span>
+        </div>
+        <div class="setfield fix">
+          <span></span>
+          <button id="btnReset" class="subtle setapply" data-i18n="清除保存的配置">清除保存的配置</button>
+        </div>
+      </div>
+    </div>
+
+    <main id="app">
+      <div class="state">正在加载…</div>
+    </main>
+
+    <div id="pending" class="pending hidden"></div>
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="i18n.js"></script>
+    <script src="abi.js"></script>
+    <script src="chain.js"></script>
+    <script src="fmt.js"></script>
+    <script src="dns.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+  
+
+
+
+
+</body>
+</html>
