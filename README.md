@@ -1,4 +1,4 @@
-# Claude-Portable
+# NameLedger
 
 <img src="./frontend/logo.png" alt="Logo" width="64"/>
 
